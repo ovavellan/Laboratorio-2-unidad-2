@@ -8,10 +8,10 @@ var player;
 //Variable de la posicion en la posicion Y
 var playerYPosition = 200;
 var fallSpeed = 0;
-var interval = setInterval(updateCanvas, 20);
+var interval = setInterval(updateCanvas, 20);// Crear la función de actualizar el canvas
 
-var isJumping = false; // Crear la función de actualizar el canvas
-var jumpSpeed = 0; // Crear la función de actualizar el canvas
+var isJumping = false; 
+var jumpSpeed = 0; //Funció para saltos
 
 var block; // Crea la variable block
 
@@ -28,20 +28,23 @@ function startGame() { // Función que inicia el juego
   scoreLabel = new createScoreLabel(10, 30); // Crea la etiqueta de puntuación
 }
 
+// Variable gameCanvas donde se almacenara la creación del elemento Canvas
+// y una función para establecer alto y ancho de el elemento Canvas
 var gameCanvas = {
-  canvas: document.createElement("canvas"),
+  canvas: document.createElement("canvas"), //Creación del elemento Canvas
   start: function () {
-    this.canvas.width = canvasWidth;
-    this.canvas.height = canvasHeight;
-    this.context = this.canvas.getContext("2d");
-    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    this.canvas.width = canvasWidth; //Establece ancho
+    this.canvas.height = canvasHeight; //Establece alto
+    this.context = this.canvas.getContext("2d"); //Devolver contexto de dibujo en un lienzo de canvas
+    document.body.insertBefore(this.canvas, document.body.childNodes[0]); //Devolver colección de nodos hijos
   }
 }
 
+// Creación de la función para bloque de ataque 
 function createBlock() {
-  var width = randomNumber(10, 50);
-  var height = randomNumber(10, 200);
-  var speed = randomNumber(2, 6);
+  var width = randomNumber(10, 50); //números aleatorios para ancho
+  var height = randomNumber(10, 200); //números aleatorios para alto
+  var speed = randomNumber(2, 6); //números aleatorios para velocidad
 
   this.x = canvasWidth;
   this.y = canvasHeight - height;
@@ -92,7 +95,7 @@ function createPlayer(width, height, x) { // Crea el jugador y lo asigna a la va
       this.y = ground; // Asigna la posicion en la posicionY del suelo
     } 
   }
-  this.jump = function () {
+  this.jump = function () { //Función para saltos
     if (isJumping) {
       this.y -= jumpSpeed;
       jumpSpeed += 0.3;
@@ -163,5 +166,5 @@ document.body.onkeyup = function (e) {
 }
 
 
-
+// Alerta para dar indicaciones al usuario, la cuál  aparecerá al abrir la página
 window.alert("Bienvenido a nuestro sitio web, para jugar usa la barra espaciadora");
